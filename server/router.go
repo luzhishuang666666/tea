@@ -1,11 +1,11 @@
 package server
 
 import (
-	"os"
-	"singo/api"
-	"singo/middleware"
-
 	"github.com/gin-gonic/gin"
+	_ "github.com/swaggo/gin-swagger"
+	"os"
+	"tea/api"
+	"tea/middleware"
 )
 
 // NewRouter 路由配置
@@ -20,7 +20,7 @@ func NewRouter() *gin.Engine {
 	// 路由
 	v1 := r.Group("/api/v1")
 	{
-		v1.POST("ping", api.Ping)
+		v1.GET("ping", api.Ping)
 
 		// 用户登录
 		v1.POST("user/register", api.UserRegister)
@@ -37,5 +37,6 @@ func NewRouter() *gin.Engine {
 			auth.DELETE("user/logout", api.UserLogout)
 		}
 	}
+
 	return r
 }

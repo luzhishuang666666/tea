@@ -1,8 +1,8 @@
 package api
 
 import (
-	"singo/serializer"
-	"singo/service"
+	"tea/serializer"
+	"tea/service"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
