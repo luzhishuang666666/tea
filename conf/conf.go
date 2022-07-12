@@ -2,9 +2,9 @@ package conf
 
 import (
 	"os"
-	"singo/cache"
-	"singo/model"
-	"singo/util"
+	"tea/cache"
+	"tea/model"
+	"tea/util"
 
 	"github.com/joho/godotenv"
 )

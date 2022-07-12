@@ -1,4 +1,4 @@
-module singo
+module tea
 
 go 1.16
 
