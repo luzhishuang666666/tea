@@ -1,8 +1,8 @@
 package service
 
 import (
-	"tea/model"
-	"tea/serializer"
+	"singo/model"
+	"singo/serializer"
 )
 
 // UserRegisterService 管理用户注册服务

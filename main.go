@@ -1,8 +1,8 @@
 package main
 
 import (
-	"tea/conf"
-	"tea/server"
+	"singo/conf"
+	"singo/server"
 )
 
 func main() {
