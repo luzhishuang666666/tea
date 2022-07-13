@@ -37,5 +37,19 @@ func NewRouter() *gin.Engine {
 			auth.DELETE("user/logout", api.UserLogout)
 		}
 	}
+
+	//仓库接口
+	warehouse := r.Group("/warehouse")
+	{
+		warehouse.GET("ping", api.Ping)
+		warehouse.POST("/list", api.WarehouseList)
+	}
+
+	//产品接口
+	product := r.Group("/product")
+	{
+		product.GET("ping", api.Ping)
+	}
+
 	return r
 }

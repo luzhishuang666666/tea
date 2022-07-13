@@ -10,6 +10,14 @@ type Response struct {
 	Error string      `json:"error,omitempty"`
 }
 
+type PageResponse struct {
+	Code  int         `json:"code"`
+	List  interface{} `json:"List,omitempty"`
+	Count int         `json:"count"`
+	Msg   string      `json:"msg"`
+	Error string      `json:"error,omitempty"`
+}
+
 // TrackedErrorResponse 有追踪信息的错误响应
 type TrackedErrorResponse struct {
 	Response
