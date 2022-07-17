@@ -49,6 +49,7 @@ func NewRouter() *gin.Engine {
 	product := r.Group("/product")
 	{
 		product.GET("ping", api.Ping)
+		product.POST("add", api.ProductAdd)
 	}
 
 	return r

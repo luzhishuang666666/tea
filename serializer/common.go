@@ -18,6 +18,12 @@ type PageResponse struct {
 	Error string      `json:"error,omitempty"`
 }
 
+type NormalResponse struct {
+	Code  int    `json:"code"`
+	Msg   string `json:"msg"`
+	Error string `json:"error,omitempty"`
+}
+
 // TrackedErrorResponse 有追踪信息的错误响应
 type TrackedErrorResponse struct {
 	Response
