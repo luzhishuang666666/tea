@@ -12,11 +12,8 @@ type WareHouseListRequst struct {
 	PageSize int `form:"pageSize" json:"pageSize"`
 }
 
-type WareHouseListRespose struct {
-	Id         int    `json:"id"`
-	Name       string `json:"name"`
-	Createtime string `json:"createtime"`
-	Remark     string `json:"remark"`
+type WareHouseDetailRequst struct {
+	Id int `form:"id" json:"id"`
 }
 
 func (service *WareHouseListRequst) WareHouseList(c *gin.Context) serializer.PageResponse {
@@ -47,6 +44,35 @@ func (service *WareHouseListRequst) WareHouseList(c *gin.Context) serializer.Pag
 		List:  warehouse,
 		Count: count16,
 		Msg:   string("sucess"),
+	}
+	return res
+}
+
+func (service *WareHouseDetailRequst) WareHouseDetail(c *gin.Context) serializer.NormalResponse {
+	var id = service.Id
+	var warehouse model.Warehouse
+
+	if err := model.DB.Model(&warehouse).Where("id = ?", id).Find(&warehouse).Error; err != nil {
+		var res = serializer.NormalResponse{
+			Code: 500,
+			Msg:  string("仓库列表查询失败"),
+		}
+		return res
+	}
+
+	warehouseDetail, err := model.Warehouse2WarehouseDetail(warehouse)
+	if err != nil {
+		var res = serializer.NormalResponse{
+			Code: 500,
+			Msg:  string("Warehouse to WarehouseDetail失败"),
+		}
+		return res
+	}
+
+	var res = serializer.NormalResponse{
+		Code: 200,
+		Data: warehouseDetail,
+		Msg:  string("sucess"),
 	}
 	return res
 }

@@ -42,14 +42,17 @@ func NewRouter() *gin.Engine {
 	warehouse := r.Group("/warehouse")
 	{
 		warehouse.GET("ping", api.Ping)
-		warehouse.POST("/list", api.WarehouseList)
+		warehouse.POST("list", api.WarehouseList)
+		warehouse.GET("detail", api.WarehouseDetail)
 	}
 
 	//产品接口
 	product := r.Group("/product")
 	{
 		product.GET("ping", api.Ping)
+		product.POST("list", api.ProductList)
 		product.POST("add", api.ProductAdd)
+		product.GET("searchByName", api.SearchByName)
 	}
 
 	return r

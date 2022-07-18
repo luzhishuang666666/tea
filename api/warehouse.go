@@ -14,3 +14,12 @@ func WarehouseList(c *gin.Context) {
 		c.JSON(200, ErrorResponse(err))
 	}
 }
+func WarehouseDetail(c *gin.Context) {
+	var wareHouseDetailService service.WareHouseDetailRequst
+	if err := c.ShouldBind(&wareHouseDetailService); err == nil {
+		res := wareHouseDetailService.WareHouseDetail(c)
+		c.JSON(200, res)
+	} else {
+		c.JSON(200, ErrorResponse(err))
+	}
+}
